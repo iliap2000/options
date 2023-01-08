@@ -1,0 +1,23 @@
+<form method="post">
+    {% csrf_token %}
+    <label for="spot_price">Spot price:</label><br>
+    <input type="text" id="spot_price" name="S"><br>
+    <label for="strike_price">Strike price:</label><br>
+    <input type="text" id="strike_price" name="K"><br>
+    <label for="time_to_expiration">Time to expiration (in months):</label><br>
+    <input type="text" id="time_to_expiration" name="T"><br>
+    <label for="risk_free_rate">Risk-free rate:</label><br>
+    <input type="text" id="risk_free_rate" name="r"><br>
+    <label for="volatility">Volatility:</label><br>
+    <input type="text" id="volatility" name="sigma"><br>
+    <label for="option_type">Option type:</label><br>
+    <select id="option_type" name="option_type">
+        <option value="call">Call</option>
+        <option value="put">Put</option>
+    </select><br><br>
+    <input type="submit" value="Calculate">
+</form>
+
+{% if option_price %}
+    <p>Option price: {{ option_price }}</p>
+{% endif %}
